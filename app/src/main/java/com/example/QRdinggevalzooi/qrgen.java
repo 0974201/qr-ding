@@ -22,15 +22,16 @@ public class qrgen{
     //https://zxing.github.io/zxing/apidocs/ !!! apidocs yessssss <3
 
     //variabelen:
-    private int SIZE = 350; //hoe groot de qr code moet zijn in pixels
+    //private int SIZE = 350; //hoe groot de qr code moet zijn in pixels
 
-    public static Bitmap qrDing(int SIZE) throws WriterException {
+    public static Bitmap qrDing(String geweldigeTekst) throws WriterException {
 
         QRCodeWriter qr = new QRCodeWriter(); //de writer aanroepen om qr dingetje te maken.
 
-        String geweldigeTekst = "aaaa"; // <- meegeven wat er in een textbox wordt ingevoerd.
-        int width = SIZE;
-        int height = SIZE;
+        //geweldigeTekst = "aaaa"; // <- meegeven wat er in een textbox wordt ingevoerd.
+        int size = 350;
+        int width = size;
+        int height = size;
 
         HashMap<EncodeHintType, Object> encodeding = new HashMap<EncodeHintType, Object>();
         //econdjhintype in hashmap gestopt, geef object mee zodat die de andere shit pakt.
@@ -44,19 +45,19 @@ public class qrgen{
             //width en height spreken voor zich
             //encodeding neemt extra shit mee zoals error correctie of wlke soort encoding (utf-8/shift-js) je wilt gebruiken
 
-            int[] zooi = new int[SIZE * SIZE]; //array aanmaken om de qr erin te proppen
-            for (int i = 0; i < SIZE; i++){
-                for (int j = 0; j < SIZE; j++){
+            int[] zooi = new int[size * size]; //array aanmaken om de qr erin te proppen
+            for (int i = 0; i < size; i++){
+                for (int j = 0; j < size; j++){
                     if (maakQRDing.get(j,i)){ //kijkt naar huidige bit en als het true is dan wordt ie zwart
-                        zooi[i * SIZE + j] = Color.BLACK;
+                        zooi[i * size + j] = Color.BLACK;
                     } else {
-                        zooi[i * SIZE + j] = Color.WHITE;
+                        zooi[i * size + j] = Color.WHITE;
                     }
                 }
             }
 
-            Bitmap yeet = Bitmap.createBitmap(SIZE, SIZE, Bitmap.Config.ARGB_8888); //qr code > bitmap zodat het gezien kan worden
-            yeet.setPixels(zooi, 0, SIZE, 0, 0, SIZE, SIZE); //uh schijnbaar zorgt dit ervoor dat de qr code scherp is??
+            Bitmap yeet = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888); //qr code > bitmap zodat het gezien kan worden
+            yeet.setPixels(zooi, 0, size, 0, 0, size, size); //uh schijnbaar zorgt dit ervoor dat de qr code scherp is??
             return yeet;
 
         } catch (WriterException ex){
