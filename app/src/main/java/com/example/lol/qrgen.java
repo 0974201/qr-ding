@@ -56,7 +56,8 @@ public class qrgen{
                 }
             }
 
-            Bitmap yeet = Bitmap.createBitmap(zooi, SIZE, SIZE, Bitmap.Config.ARGB_8888); //qr code > bitmap zodat het gezien kan worden
+            Bitmap yeet = Bitmap.createBitmap(SIZE, SIZE, Bitmap.Config.ARGB_8888); //qr code > bitmap zodat het gezien kan worden
+            yeet.setPixels(zooi, 0, SIZE, 0, 0, SIZE, SIZE); //uh schijnbaar zorgt dit ervoor dat de qr code scherp is??
             return yeet;
 
         } catch (WriterException ex){

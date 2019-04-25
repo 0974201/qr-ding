@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         butt.setOnClickListener(new View.OnClickListener() { //kjken of er op het knopje is gedrukt
             @Override
             public void onClick(View v) {
-                String output = dingetje.getText().toString(); //maakt van de ingevoerde text een string.
+                String output = dingetje.getText().toString().trim(); //maakt van de ingevoerde text een string - spaties op het begin/einde.
                 //oke en wat moet ik nu doen.
                 //of ik geef het op en dump alles in de main activity want ughhh ik heb maar 2 uur geslapen rip.
             }
