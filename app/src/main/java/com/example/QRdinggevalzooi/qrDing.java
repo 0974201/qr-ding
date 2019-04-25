@@ -13,11 +13,7 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import java.util.HashMap;
 //import com.google.zxing.qrcode.*;
 
-public class qrgen{
-
-    public qrgen(String geweldigeTekst) {
-        geweldigeTekst = "aaaa";
-    }
+public class qrDing{
 
     //ze hebben de code v/d test app uit de zxing repo verwijderd. cool. to the waybackmachine!
     //waybackmachine heb het ook niet lol
@@ -69,10 +65,4 @@ public class qrgen{
         }
         return null;
     }
-
-
-
-
-
-
 }
