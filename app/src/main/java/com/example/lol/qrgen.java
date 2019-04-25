@@ -1,5 +1,8 @@
 package com.example.lol;
 
+import android.graphics.Bitmap;
+import android.graphics.Color;
+
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
@@ -8,8 +11,6 @@ import com.google.zxing.EncodeHintType;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
 import java.util.HashMap;
-
-
 //import com.google.zxing.qrcode.*;
 
 public class qrgen{
@@ -19,11 +20,13 @@ public class qrgen{
     //jfsdlkfjslkdjflkdfjlkdjf ik ga mezelf van het dak yeeten
     //todo: yeet mezelf van het dak
     //https://zxing.github.io/zxing/apidocs/ !!! apidocs yessssss <3
+    //https://developer.android.com/reference/android/graphics/Bitmap ughh
 
     //variabelen:
     private int SIZE = 350; //hoe groot de qr code moet zijn in pixels
 
-    public static BitMatrix qrDing(int SIZE) throws WriterException { //heb gwn de methode uit de documentatie gecopypaste lol
+    public static Bitmap qrDing(int SIZE) throws WriterException {
+        //bitmatrix veranderd naar bitmap omdat dat geen nut heeft lol.
 
         QRCodeWriter qr = new QRCodeWriter(); //de writer aanroepen om qr dingetje te maken.
 
@@ -38,7 +41,6 @@ public class qrgen{
 
         try {
             BitMatrix maakQRDing = qr.encode(contents, BarcodeFormat.QR_CODE, width, height, encodeding);
-
             //hm, oke let's see, de string geeft mee wat er encoded moet worden,
             //BarcodeFormat in welke format het moet (bijv qr, maar kan ook een barcode zijn),
             //width en height spreken voor zich
@@ -46,7 +48,17 @@ public class qrgen{
 
             //hoold up, hij maakt het nu wel maar hoe krijg ik dit naar het scherm....
 
-            return maakQRDing;
+            int[] zooi = new int[SIZE * SIZE]; //array aanmaken om de qr erin te proppen
+            for (int i = 0; i < SIZE; i++){
+                int offset = i * SIZE;
+                for (int j = 0; j < SIZE; j++){
+                    zooi[offset + j] = maakQRDing.get(j,i) ? Color.BLACK : Color.WHITE; //kijkt naar huidige bit en als het true is dan wordt ie zwart
+                }
+            }
+
+            Bitmap yeet = Bitmap.createBitmap(SIZE, SIZE, Bitmap.Config.ARGB_8888);
+            yeet.setPixels(zooi, 0, SIZE, 0, 0, SIZE, SIZE);
+            return yeet;
 
         } catch (WriterException ex){
             ex.printStackTrace(); //gooit een exception naar je kop als je iets doms doet.
