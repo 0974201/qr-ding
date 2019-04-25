@@ -20,7 +20,6 @@ public class qrgen{
     //jfsdlkfjslkdjflkdfjlkdjf ik ga mezelf van het dak yeeten
     //todo: yeet mezelf van het dak
     //https://zxing.github.io/zxing/apidocs/ !!! apidocs yessssss <3
-    //https://developer.android.com/reference/android/graphics/Bitmap ughh
 
     //variabelen:
     private int SIZE = 350; //hoe groot de qr code moet zijn in pixels
