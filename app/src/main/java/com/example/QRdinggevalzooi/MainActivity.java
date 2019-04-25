@@ -34,10 +34,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String geweldigeTekst = dingetje.getText().toString().trim(); //maakt van de ingevoerde text een string - spaties op het begin/einde.
-                Bitmap yeet = new qrDing(geweldigeTekst);
-                ivStats.setImageBitmap(yeet);
-                //oke en wat moet ik nu doen reee hoe werkt dit alles
-                //mss moet ik alles maar in de main activity dumpen want ughhh ik heb maar 2 uur geslapen rip.
+
+                try {
+
+                    Bitmap yeet = qrDing(geweldigeTekst); //string -> qr code
+                    ivStats.setImageBitmap(yeet); // -> laat qr code zien als het goed gaat
+
+                } catch (WriterException e) {
+                    e.printStackTrace(); //gooit een exception naar je.
+                }
             }
         });
     }
