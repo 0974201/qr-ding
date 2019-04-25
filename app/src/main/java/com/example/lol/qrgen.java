@@ -25,11 +25,10 @@ public class qrgen{
     private int SIZE = 350; //hoe groot de qr code moet zijn in pixels
 
     public static Bitmap qrDing(int SIZE) throws WriterException {
-        //bitmatrix veranderd naar bitmap omdat dat geen nut heeft lol.
-
+        
         QRCodeWriter qr = new QRCodeWriter(); //de writer aanroepen om qr dingetje te maken.
 
-        String contents = "aaaa"; // <- meegeven wat er in een textbox wordt ingevoerd.
+        String geweldigeTekst = "aaaa"; // <- meegeven wat er in een textbox wordt ingevoerd.
         int width = SIZE;
         int height = SIZE;
 
@@ -39,7 +38,7 @@ public class qrgen{
         encodeding.put(EncodeHintType.MARGIN, 3); //maakt dat witte vlak ding om de qr code kleiner
 
         try {
-            BitMatrix maakQRDing = qr.encode(contents, BarcodeFormat.QR_CODE, width, height, encodeding);
+            BitMatrix maakQRDing = qr.encode(geweldigeTekst, BarcodeFormat.QR_CODE, width, height, encodeding);
             //hm, oke let's see, de string geeft mee wat er encoded moet worden,
             //BarcodeFormat in welke format het moet (bijv qr, maar kan ook een barcode zijn),
             //width en height spreken voor zich
