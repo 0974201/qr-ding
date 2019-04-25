@@ -6,8 +6,11 @@ import android.os.Bundle;
 public class MainActivity extends AppCompatActivity {
 
     //waarom heeft dit ding een spellchecker. leaf me be.
-    //todo: yeet mezelf uit een raam
+    //todo: schrijf stuff idek
     //oh, nice ik wist niet dat android studio dat deed.
+    //also, waarom gebruikt het letterlijk 1GB ram. android studio why
+
+    qrgen.qrDing()
 
     @Override
 
