@@ -44,7 +44,7 @@ public class qrgen{
             //width en height spreken voor zich
             //encodeding neemt extra shit mee zoals error correctie of wlke soort encoding (utf-8/shift-js) je wilt gebruiken
 
-            //hoold up, hij maakt het nu wel maar hoe krijg ik dit naar het scherm.
+            //hoold up, hij maakt het nu wel maar hoe krijg ik dit naar het scherm....
 
             return maakQRDing;
 
