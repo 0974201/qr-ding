@@ -15,6 +15,10 @@ import java.util.HashMap;
 
 public class qrgen{
 
+    public qrgen(String geweldigeTekst) {
+        geweldigeTekst = "aaaa";
+    }
+
     //ze hebben de code v/d test app uit de zxing repo verwijderd. cool. to the waybackmachine!
     //waybackmachine heb het ook niet lol
     //jfsdlkfjslkdjflkdfjlkdjf ik ga mezelf van het dak yeeten
@@ -22,14 +26,14 @@ public class qrgen{
     //https://zxing.github.io/zxing/apidocs/ !!! apidocs yessssss <3
 
     //variabelen:
-    //private int SIZE = 350; //hoe groot de qr code moet zijn in pixels
+    //private int SIZE = 350;
 
     public static Bitmap qrDing(String geweldigeTekst) throws WriterException {
 
         QRCodeWriter qr = new QRCodeWriter(); //de writer aanroepen om qr dingetje te maken.
 
         //geweldigeTekst = "aaaa"; // <- meegeven wat er in een textbox wordt ingevoerd.
-        int size = 350;
+        int size = 350; //hoe groot de qr code moet zijn in pixels, don't ask why i did it like this
         int width = size;
         int height = size;
 
