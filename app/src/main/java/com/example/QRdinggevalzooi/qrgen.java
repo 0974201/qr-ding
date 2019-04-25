@@ -69,10 +69,4 @@ public class qrgen{
         }
         return null;
     }
-
-
-
-
-
-
 }
