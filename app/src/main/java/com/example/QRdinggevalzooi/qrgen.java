@@ -1,4 +1,4 @@
-package com.example.lol;
+package com.example.QRdinggevalzooi;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -25,7 +25,7 @@ public class qrgen{
     private int SIZE = 350; //hoe groot de qr code moet zijn in pixels
 
     public static Bitmap qrDing(int SIZE) throws WriterException {
-        
+
         QRCodeWriter qr = new QRCodeWriter(); //de writer aanroepen om qr dingetje te maken.
 
         String geweldigeTekst = "aaaa"; // <- meegeven wat er in een textbox wordt ingevoerd.
