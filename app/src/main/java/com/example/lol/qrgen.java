@@ -46,18 +46,18 @@ public class qrgen{
             //width en height spreken voor zich
             //encodeding neemt extra shit mee zoals error correctie of wlke soort encoding (utf-8/shift-js) je wilt gebruiken
 
-            //hoold up, hij maakt het nu wel maar hoe krijg ik dit naar het scherm....
-
             int[] zooi = new int[SIZE * SIZE]; //array aanmaken om de qr erin te proppen
             for (int i = 0; i < SIZE; i++){
-                int offset = i * SIZE;
                 for (int j = 0; j < SIZE; j++){
-                    zooi[offset + j] = maakQRDing.get(j,i) ? Color.BLACK : Color.WHITE; //kijkt naar huidige bit en als het true is dan wordt ie zwart
+                    if (maakQRDing.get(j,i)){ //kijkt naar huidige bit en als het true is dan wordt ie zwart
+                        zooi[i * SIZE + j] = Color.BLACK;
+                    } else {
+                        zooi[i * SIZE + j] = Color.WHITE;
+                    }
                 }
             }
 
-            Bitmap yeet = Bitmap.createBitmap(SIZE, SIZE, Bitmap.Config.ARGB_8888);
-            yeet.setPixels(zooi, 0, SIZE, 0, 0, SIZE, SIZE);
+            Bitmap yeet = Bitmap.createBitmap(zooi, SIZE, SIZE, Bitmap.Config.ARGB_8888); //qr code > bitmap zodat het gezien kan worden
             return yeet;
 
         } catch (WriterException ex){
