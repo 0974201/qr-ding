@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.QRdinggevalzooi.R;
+import com.google.zxing.WriterException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
                 try {
 
-                    Bitmap yeet = qrDing(geweldigeTekst); //string -> qr code
+                    Bitmap yeet = qrDing.qrDing(geweldigeTekst);  //string -> qr code
                     ivStats.setImageBitmap(yeet); // -> laat qr code zien als het goed gaat
 
                 } catch (WriterException e) {

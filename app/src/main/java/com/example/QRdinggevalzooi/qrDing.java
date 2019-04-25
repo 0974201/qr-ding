@@ -11,14 +11,12 @@ import com.google.zxing.EncodeHintType;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
 import java.util.HashMap;
-//import com.google.zxing.qrcode.*;
 
 public class qrDing{
 
     //ze hebben de code v/d test app uit de zxing repo verwijderd. cool. to the waybackmachine!
     //waybackmachine heb het ook niet lol
-    //jfsdlkfjslkdjflkdfjlkdjf ik ga mezelf van het dak yeeten
-    //todo: yeet mezelf van het dak
+    //todo: yeet
     //https://zxing.github.io/zxing/apidocs/ !!! apidocs yessssss <3
 
     public static Bitmap qrDing(String geweldigeTekst) throws WriterException {
