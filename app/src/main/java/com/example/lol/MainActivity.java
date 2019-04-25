@@ -2,6 +2,7 @@ package com.example.lol;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -26,6 +27,15 @@ public class MainActivity extends AppCompatActivity {
         this.ivStats = findViewById(R.id.ivStats);
         this.dingetje = findViewById(R.id.dingetje);
         this.butt = findViewById(R.id.butt); //yeey it found the butt
+
+        butt.setOnClickListener(new View.OnClickListener() { //kjken of er op het knopje is gedrukt
+            @Override
+            public void onClick(View v) {
+                String output = dingetje.getText().toString(); //maakt van de ingevoerde text een string.
+                //oke en wat moet ik nu doen.
+                //of ik geef het op en dump alles in de main activity want ughhh ik heb maar 2 uur geslapen rip.
+            }
+        });
     }
 
     //ImageView view = new ImageView();
