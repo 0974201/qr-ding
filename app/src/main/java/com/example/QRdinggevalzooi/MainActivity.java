@@ -1,4 +1,4 @@
-package com.example.lol;
+package com.example.QRdinggevalzooi;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,12 +7,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.QRdinggevalzooi.R;
+
 public class MainActivity extends AppCompatActivity {
 
     //waarom heeft dit ding een spellchecker. leaf me be.
-    //todo: schrijf stuff idek
-    //oh, nice ik wist niet dat android studio dat deed.
-    //also, waarom gebruikt het letterlijk >2GB ram. android studio why
+    //also, waarom gebruikt dit ding letterlijk >2GB ram. android studio why
+    //idc about those 4 warnings shhhh @ xml zooi
 
     private ImageView ivStats;
     private EditText dingetje;
@@ -32,12 +33,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String output = dingetje.getText().toString().trim(); //maakt van de ingevoerde text een string - spaties op het begin/einde.
+                //ivStats.setImageBitmap(yeet);
                 //oke en wat moet ik nu doen.
                 //of ik geef het op en dump alles in de main activity want ughhh ik heb maar 2 uur geslapen rip.
             }
         });
     }
-
-    //ImageView view = new ImageView();
-    //view.setImageBitmap(yeet);
 }

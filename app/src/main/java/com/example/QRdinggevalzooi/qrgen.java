@@ -1,4 +1,4 @@
-package com.example.lol;
+package com.example.QRdinggevalzooi;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -25,7 +25,7 @@ public class qrgen{
     private int SIZE = 350; //hoe groot de qr code moet zijn in pixels
 
     public static Bitmap qrDing(int SIZE) throws WriterException {
-        
+
         QRCodeWriter qr = new QRCodeWriter(); //de writer aanroepen om qr dingetje te maken.
 
         String geweldigeTekst = "aaaa"; // <- meegeven wat er in een textbox wordt ingevoerd.
@@ -33,7 +33,7 @@ public class qrgen{
         int height = SIZE;
 
         HashMap<EncodeHintType, Object> encodeding = new HashMap<EncodeHintType, Object>();
-        //okay dacht dat het in een enum moest maar kennelijk niet. geef object mee zodat die de andere shit pakt.
+        //econdjhintype in hashmap gestopt, geef object mee zodat die de andere shit pakt.
         encodeding.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.Q); //geeft error correctie mee, level q is 25% ofzo iets met correctie in qr codes moet dit nog uitzoeken op wiki ofzo
         encodeding.put(EncodeHintType.MARGIN, 3); //maakt dat witte vlak ding om de qr code kleiner
 

@@ -1,4 +1,4 @@
-package com.example.lol;
+package com.example.QRdinggevalzooi;
 
 import org.junit.Test;
 
