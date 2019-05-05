@@ -36,8 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 String geweldigeTekst = dingetje.getText().toString().trim(); //maakt van de ingevoerde text een string - spaties op het begin/einde.
 
                 try {
-
-                    Bitmap yeet = qrDing.qrDing(geweldigeTekst);  //string -> qr code
+                    Bitmap yeet = new qrDing().qrDing(geweldigeTekst); //string -> qr code
                     ivStats.setImageBitmap(yeet); // -> laat qr code zien als het goed gaat
 
                 } catch (WriterException e) {

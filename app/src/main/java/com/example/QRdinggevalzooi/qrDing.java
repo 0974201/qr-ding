@@ -18,12 +18,17 @@ public class qrDing{
     //waybackmachine heb het ook niet lol
     //todo: yeet
     //https://zxing.github.io/zxing/apidocs/ !!! apidocs yessssss <3
+    //https://developer.android.com/reference/android/graphics/Color?hl=en
 
-    public static Bitmap qrDing(String geweldigeTekst) throws WriterException {
+    private int qrWH = 350; //hoe groot de qr code moet zijn in pixels
+    private BarcodeFormat barF = BarcodeFormat.QR_CODE; //ehehehe. geeft mee in welke format het moet (bijv qr, maar kan ook een barcode zijn)
+    private int kleurtje = Color.BLACK; //okay het moet dus kennelijk een int zijn? hoe dan. ...oh ik heb een idee!
+    //als het toch een int moet zijn dan kan ik hex of rgb zooi in proppen hmmmmmmmmmmmmmmmmm
+
+
+    public Bitmap qrDing(String geweldigeTekst) throws WriterException { // < hoe had ik met mijn slaperige kop de static gemist hier??
 
         QRCodeWriter qr = new QRCodeWriter(); //de writer aanroepen om qr dingetje te maken.
-
-        int qrWH = 350; //hoe groot de qr code moet zijn in pixels
 
         HashMap<EncodeHintType, Object> encodeding = new HashMap<EncodeHintType, Object>();
         //econdjhintype in hashmap gestopt, geef object mee zodat die de andere shit pakt.
@@ -31,9 +36,8 @@ public class qrDing{
         encodeding.put(EncodeHintType.MARGIN, 2); //maakt dat witte vlak ding om de qr code kleiner
 
         try {
-            BitMatrix maakQRDing = qr.encode(geweldigeTekst, BarcodeFormat.QR_CODE, qrWH, qrWH, encodeding);
+            BitMatrix maakQRDing = qr.encode(geweldigeTekst, barF, qrWH, qrWH, encodeding);
             //hm, oke let's see, de string geeft mee wat er encoded moet worden,
-            //BarcodeFormat in welke format het moet (bijv qr, maar kan ook een barcode zijn),
             //width en height spreken voor zich
             //encodeding neemt extra shit mee zoals error correctie of wlke soort encoding (utf-8/shift-js) je wilt gebruiken
 
@@ -41,7 +45,7 @@ public class qrDing{
             for (int i = 0; i < qrWH; i++){
                 for (int j = 0; j < qrWH; j++){
                     if (maakQRDing.get(j,i)){ //kijkt naar huidige bit en als het true is dan wordt ie zwart
-                        zooi[i * qrWH + j] = Color.BLACK;
+                        zooi[i * qrWH + j] = kleurtje;
                     } else {
                         zooi[i * qrWH + j] = Color.WHITE;
                     }
