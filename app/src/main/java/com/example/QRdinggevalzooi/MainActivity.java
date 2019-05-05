@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.zxing.WriterException;
 
@@ -40,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
                     ivStats.setImageBitmap(yeet); // -> laat qr code zien als het goed gaat
 
                 } catch (WriterException e) {
-                    e.printStackTrace(); //gooit een exception naar je.
+                    Toast.makeText(getApplicationContext(), "u done goofed", Toast.LENGTH_SHORT).show(); //?? moet nog uitzoeken hoe dit precies werkt lel.
+                    //e.printStackTrace(); //gooit een exception naar je.
                 }
             }
         });
