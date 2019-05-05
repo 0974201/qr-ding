@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.example.QRdinggevalzooi.R;
 import com.google.zxing.WriterException;
 
 public class MainActivity extends AppCompatActivity {
