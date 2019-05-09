@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
                     ivStats.setImageBitmap(yeet); // -> laat qr code zien als het goed gaat
 
                 } catch (WriterException e) {
-                    Toast.makeText(getApplicationContext(), "u done goofed", Toast.LENGTH_SHORT).show(); //?? moet nog uitzoeken hoe dit precies werkt lel.
-                    //e.printStackTrace(); //gooit een exception naar je.
+                    //Toast.makeText(getApplicationContext(), "u done goofed", Toast.LENGTH_SHORT).show(); //?? moet nog uitzoeken hoe dit precies werkt lel.
+                    e.printStackTrace(); //gooit een exception naar je.
                 }
             }
         });

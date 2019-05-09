@@ -19,6 +19,7 @@ public class qrDing{
     //todo: yeet
     //https://zxing.github.io/zxing/apidocs/ !!! apidocs yessssss <3
     //https://developer.android.com/reference/android/graphics/Color?hl=en
+    //food for thought: http://datagenetics.com/blog/november12013/index.html
 
     //wedden dat als ik later hier naar ga kijken, + medicatie niet ben vergeten, mij serieus ga afvragen wtf ik dit alles heb aangepast
 
@@ -33,7 +34,7 @@ public class qrDing{
 
         HashMap<EncodeHintType, Object> encodeDing = new HashMap<EncodeHintType, Object>();
         //econdjhintype in hashmap gestopt, geef object mee zodat die de andere shit pakt.
-        encodeDing.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.Q); //geeft error correctie mee, level q is 25% correctie in qr codes idek moet dit nog uitzoeken op wiki
+        encodeDing.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.Q); //geeft error correctie mee, level q is 25% correctie
         encodeDing.put(EncodeHintType.MARGIN, 1); //maakt dat witte vlak ding om de qr code kleiner
 
         try {
