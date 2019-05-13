@@ -32,9 +32,9 @@ public class qrDing{
 
         QRCodeWriter qr = new QRCodeWriter(); //de writer aanroepen om qr dingetje te maken.
 
-        HashMap<EncodeHintType, Object> encodeDing = new HashMap<EncodeHintType, Object>();
-        //econdjhintype in hashmap gestopt, geef object mee zodat die de andere shit pakt.
-        encodeDing.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.Q); //geeft error correctie mee, level q is 25% correctie
+        HashMap<EncodeHintType, Object> encodeDing = new HashMap<>();
+        //key;value. geef hints mee om de qrwriter te helpen tijdens het maken van de qr codes
+        encodeDing.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.Q); //error correctie: level q is 25% correctie
         encodeDing.put(EncodeHintType.MARGIN, 1); //maakt dat witte vlak ding om de qr code kleiner
 
         try {
@@ -44,7 +44,7 @@ public class qrDing{
             //encodeDing neemt extra shit mee zoals error correctie of welke soort encoding (utf-8/shift-js) je wilt gebruiken
 
             int[] zooi = new int[qrWH * qrWH]; //array voor bitmap ding zodat hij de qr codeding kan omzetten naar een plaatje :D
-            //in andere woorden; de qr ding wordt bruut vermoord en in stukjes gezaagd en dan weer inelkaar gezet.
+
             for (int i = 0; i < qrWH; i++){
                 for (int j = 0; j < qrWH; j++){
                     if (maakQRDing.get(j,i)){ //kijkt naar huidige bit en als het true is dan wordt ie zwart/// rood!!
