@@ -20,6 +20,7 @@ public class qrDing{
     //https://zxing.github.io/zxing/apidocs/ !!! apidocs yessssss <3
     //https://developer.android.com/reference/android/graphics/Color?hl=en
     //food for thought: http://datagenetics.com/blog/november12013/index.html
+    //https://github.com/googlesamples/android-vision < gebruikt de playstore??
 
     //wedden dat als ik later hier naar ga kijken, + medicatie niet ben vergeten, mij serieus ga afvragen wtf ik dit alles heb aangepast
 
@@ -33,8 +34,9 @@ public class qrDing{
         QRCodeWriter qr = new QRCodeWriter(); //de writer aanroepen om qr dingetje te maken.
 
         HashMap<EncodeHintType, Object> encodeDing = new HashMap<>();
-        //key;value. geef hints mee om de qrwriter te helpen tijdens het maken van de qr codes
-        encodeDing.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.Q); //error correctie: level q is 25% correctie
+        //key;value. geeft hints ("ErrorCorrectionLevel.Q") mee om de qrwriter te helpen tijdens het maken van de qr codes
+        encodeDing.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.Q); //error correctie: level q is 25% correctie (tot 25% kan beschadigd zijn en daar boven stopt ie met leesbaar zijn)
+        //kan dit later nog veranderen aangezien dit ten koste gaat van de hoeveelheid bits die opgeslagen kunnen worden
         encodeDing.put(EncodeHintType.MARGIN, 1); //maakt dat witte vlak ding om de qr code kleiner
 
         try {

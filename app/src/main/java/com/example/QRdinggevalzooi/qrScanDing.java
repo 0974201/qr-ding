@@ -13,7 +13,7 @@ public class qrScanDing {
     //https://zxing.github.io/zxing/apidocs/com/google/zxing/qrcode/QRCodeReader.html
     //okay maar hoe doe ik camera shit.
 
-    public String decodeZzz(BinaryBitmap plaatje) throws NotFoundException, FormatException {
+    public String decoded(BinaryBitmap plaatje) throws NotFoundException, FormatException {
 
         QRCodeReader qr = new QRCodeReader(); // (*・ω・)ﾉ ghelleu QRCodeReader
         String qrResultDing; //alvast een string aanmaken waarin later de gedecodeerde zooi in gestopt wordt
