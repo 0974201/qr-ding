@@ -50,7 +50,7 @@
         android:layout_height="45dp"
         android:layout_marginStart="105dp"
         android:layout_marginLeft="105dp"
-        android:layout_marginTop="556dp"
+        android:layout_marginTop="540dp"
         android:layout_marginEnd="105dp"
         android:layout_marginRight="105dp"
         android:text="Genereer"
