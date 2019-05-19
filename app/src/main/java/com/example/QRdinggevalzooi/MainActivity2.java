@@ -1,30 +1,21 @@
 package com.example.QRdinggevalzooi;
 
-import android.hardware.camera2.CameraDevice;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.zxing.BinaryBitmap;
-import com.google.zxing.FormatException;
-import com.google.zxing.NotFoundException;
-import com.google.zxing.PlanarYUVLuminanceSource;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.HybridBinarizer;
-
 public class MainActivity2 extends AppCompatActivity {
 
-    //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     //bcdefghijklmnopqrstuvwdxhfjdsk stop procrastinating.
-    //hoe heb ik de afgelopen paar dagen met letterlijk minder dan 3 uur slaap volgehouden idek it remains a mystery to me
-    //also feel like yelling. misschien moet ik weer naar een paar arme koeien gaan schreeuwen hahahajkhdfjhfdk
-    //of misschien niet bc my lungs hurt for 3 days or smth after last time. do not recommend.
+    //oof. okay dan maar kijken naar de cameradingvoorbeeld van google.
+    //waarom dacht ik dat dit een goed idee was.
+    //hoezo staat overal m voor? zal vast een conventie zijn maar het is 4 uur, heb geen zin om dat op te zoeken
 
     private TextView textDing;
     private Button arse;
-    //private CameraDevice cameraDevice;
 
     @Override
 
@@ -33,30 +24,13 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         this.textDing = findViewById(R.id.textDing);
-        this.arse = findViewById(R.id.arse); //yeey it found the butt
+        this.arse = findViewById(R.id.arse);
 
         arse.setOnClickListener(new View.OnClickListener() {
+            //wat heb ik allemaal geschreven yo, ik kan mijn eigen comments niet lezen
             @Override
             public void onClick(View v) {
-                PlanarYUVLuminanceSource sauce = new PlanarYUVLuminanceSource(0, 0, 0, 0, 0, 0, 0, false);
 
-                //dit ding doet decoderen versnellen want negeren onnodige pixel dingen en werkt met camera driv?,,
-                //mkea rry mt ifno v sauc
-                //woorden
-                //ik vertaal deez comments ltaer wle hfsjk
-                if (sauce != null) {
-                    BinaryBitmap plaatje = new BinaryBitmap(new HybridBinarizer(sauce));
-                    //n dtea word t iern gstoep sndota qrsqnding hete kna vertlen nr stenfg me thg??
-                    //hfeeeeeeee
-                    //teyP
-                    try {
-                        textDing.setText(new qrScanDing().decoded(plaatje)); //wfjooooo lefkjf if s wokr
-                    } catch (NotFoundException e) {
-                        e.printStackTrace();
-                    } catch (FormatException e) {
-                        e.printStackTrace();
-                    }
-                }
             }
         });
     }
@@ -71,6 +45,7 @@ public class MainActivity2 extends AppCompatActivity {
         //mkea rry mt ifno v sauc
         //woorden
         //ik vertaal deez comments ltaer wle hfsjk
+
         if(sauce != null){
             BinaryBitmap plaatje = new BinaryBitmap(new HybridBinarizer(sauce));
             //n dtea word t iern gstoep sndota qrsqnding hete kna vertlen nr stenfg me thg??
