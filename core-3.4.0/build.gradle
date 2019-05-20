@@ -1,0 +1,6 @@
+configurations.maybeCreate("default")
+
+dependencies {
+
+}
+artifacts.add("default", file('core-3.4.0.jar'))

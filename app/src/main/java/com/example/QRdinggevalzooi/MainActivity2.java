@@ -1,18 +1,19 @@
 package com.example.QRdinggevalzooi;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
 public class MainActivity2 extends AppCompatActivity {
 
-    //bcdefghijklmnopqrstuvwdxhfjdsk stop procrastinating.
-    //oof. okay dan maar kijken naar de cameradingvoorbeeld van google.
-    //waarom dacht ik dat dit een goed idee was.
-    //hoezo staat overal m voor? zal vast een conventie zijn maar het is 4 uur, heb geen zin om dat op te zoeken
+    //<< s c r e a m s  i n t o  t h e  v o i d >>
 
     private TextView textDing;
     private Button arse;
@@ -27,18 +28,24 @@ public class MainActivity2 extends AppCompatActivity {
         this.arse = findViewById(R.id.arse);
 
         arse.setOnClickListener(new View.OnClickListener() {
-            //wat heb ik allemaal geschreven yo, ik kan mijn eigen comments niet lezen
+
             @Override
             public void onClick(View v) {
-
+                Intents it = new Intents("com.google.zxing.client.android.SCAN");
+                it.initiateScan();
             }
         });
     }
 
-    /*private void ding(){ //ooh nice, in de zxing github staat iets wat ik kan gebruiken :o
-        //hhfdsjfk oke er is een voorbeeld op de github vn google hoe je een cameradinggeval maken doet
-        //don't try to reinvent the wheel,,, volg jordys advies voor een keer, sushi.
+    public void onActivityResult(int reqCode, int resCode, Intent it){
+        Intentr scanRes = IntentIntegrator.parseActivityResult(reqCode, resCode, it);
+        if(scanRes != null){
+            System.out.println("yeet");
+        }
+    }
 
+    /*private void ding(){
+        //wat heb ik allemaal geschreven yo, ik kan mijn eigen comments niet lezen
         PlanarYUVLuminanceSource sauce = new PlanarYUVLuminanceSource(0,0,0,0,0,0,0,false);
 
         //dit ding doet decoderen versnellen want negeren onnodige pixel dingen en werkt met camera driv?,,
@@ -58,7 +65,6 @@ public class MainActivity2 extends AppCompatActivity {
             } catch (FormatException e) {
                 e.printStackTrace();
             }
-
         }
     }*/
 
