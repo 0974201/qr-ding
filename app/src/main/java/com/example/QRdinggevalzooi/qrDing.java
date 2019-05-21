@@ -2,6 +2,7 @@ package com.example.QRdinggevalzooi;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.util.Log;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
@@ -65,7 +66,7 @@ public class qrDing{
         } catch (WriterException ex){
 
             ex.printStackTrace(); //nog meer exceptions
-            //todo: uhhhh dit afhandelen aangezien hij exit als je geen shit hebt ingevoerd???????
+            Log.wtf(ex.getMessage(), ex);
         }
         return null;
     }
