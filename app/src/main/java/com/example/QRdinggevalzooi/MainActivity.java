@@ -3,6 +3,7 @@ package com.example.QRdinggevalzooi;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (WriterException e) {
                     //Toast.makeText(getApplicationContext(), "u done goofed", Toast.LENGTH_SHORT).show(); //?? moet nog uitzoeken hoe dit precies werkt lel.
                     e.printStackTrace(); //gooit een exception naar je.
+                    Log.wtf(e.getMessage(), e);
                 }
             }
         });

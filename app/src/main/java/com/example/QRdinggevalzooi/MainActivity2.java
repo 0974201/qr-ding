@@ -4,12 +4,13 @@ package com.example.QRdinggevalzooi;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Size;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
+import com.google.zxing.client.android.integration.IntentIntegrator;
+import com.google.zxing.client.android.integration.IntentResult;
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -31,16 +32,27 @@ public class MainActivity2 extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intents it = new Intents("com.google.zxing.client.android.SCAN");
-                it.initiateScan();
+                IntentIntegrator it = new IntentIntegrator(MainActivity2.this); //roept qr scanner van de library
+                it.initiateScan(IntentIntegrator.QR_CODE_TYPES); //moet voor qr coeedes zoeken
             }
         });
     }
 
-    public void onActivityResult(int reqCode, int resCode, Intent it){
-        Intentr scanRes = IntentIntegrator.parseActivityResult(reqCode, resCode, it);
-        if(scanRes != null){
-            System.out.println("yeet");
+    public void onActivityResult(int reqCode, int rsCode, Intent it){ //verwerkt wat er uit de scanding is gekomen
+        IntentResult iRes = IntentIntegrator.parseActivityResult(reqCode, rsCode, it);
+
+        if(iRes != null){
+            String resCont = iRes.getContents();
+
+            if(resCont != null){
+                //showDialog(R.string.result_succeeded, iRes.toString());
+                System.out.println(resCont);
+                System.out.println(iRes.toString());
+                textDing.setText(resCont);
+            }
+        } else {
+            //showDialog(R.string.result_failed, getString(R.string.result_failed_why)); //ide error ahoyyy
+            System.out.println("phail");
         }
     }
 
