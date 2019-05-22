@@ -18,12 +18,9 @@ package com.google.zxing.client.android.result;
 
 import android.telephony.PhoneNumberUtils;
 import com.google.zxing.Result;
-import com.google.zxing.client.android.Contents;
 import com.google.zxing.client.android.Intents;
-import com.google.zxing.client.android.LocaleManager;
 import com.google.zxing.client.android.PreferencesActivity;
 import com.google.zxing.client.android.R;
-import com.google.zxing.client.android.book.SearchBookContentsActivity;
 import com.google.zxing.client.result.ParsedResult;
 import com.google.zxing.client.result.ParsedResultType;
 import com.google.zxing.client.result.ResultParser;
@@ -205,32 +202,6 @@ public abstract class ResultHandler {
 
     putExtra(intent, ContactsContract.Intents.Insert.PHONETIC_NAME, pronunciation);
 
-    if (phoneNumbers != null) {
-      int phoneCount = Math.min(phoneNumbers.length, Contents.PHONE_KEYS.length);
-      for (int x = 0; x < phoneCount; x++) {
-        putExtra(intent, Contents.PHONE_KEYS[x], phoneNumbers[x]);
-        if (phoneTypes != null && x < phoneTypes.length) {
-          int type = toPhoneContractType(phoneTypes[x]);
-          if (type >= 0) {
-            intent.putExtra(Contents.PHONE_TYPE_KEYS[x], type);
-          }
-        }
-      }
-    }
-
-    if (emails != null) {
-      int emailCount = Math.min(emails.length, Contents.EMAIL_KEYS.length);
-      for (int x = 0; x < emailCount; x++) {
-        putExtra(intent, Contents.EMAIL_KEYS[x], emails[x]);
-        if (emailTypes != null && x < emailTypes.length) {
-          int type = toEmailContractType(emailTypes[x]);
-          if (type >= 0) {
-            intent.putExtra(Contents.EMAIL_TYPE_KEYS[x], type);
-          }
-        }
-      }
-    }
-
     ArrayList<ContentValues> data = new ArrayList<>();
     if (urls != null) {
       for (String url : urls) {
@@ -404,31 +375,6 @@ public abstract class ResultHandler {
    */
   final void searchMap(String address) {
     launchIntent(new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=" + Uri.encode(address))));
-  }
-
-  final void getDirections(double latitude, double longitude) {
-    launchIntent(new Intent(Intent.ACTION_VIEW, Uri.parse("http://maps.google." +
-        LocaleManager.getCountryTLD(activity) + "/maps?f=d&daddr=" + latitude + ',' + longitude)));
-  }
-
-  // Uses the mobile-specific version of Product Search, which is formatted for small screens.
-  final void openProductSearch(String upc) {
-    Uri uri = Uri.parse("http://www.google." + LocaleManager.getProductSearchCountryTLD(activity) +
-        "/m/products?q=" + upc + "&source=zxing");
-    launchIntent(new Intent(Intent.ACTION_VIEW, uri));
-  }
-
-  final void openBookSearch(String isbn) {
-    Uri uri = Uri.parse("http://books.google." + LocaleManager.getBookSearchCountryTLD(activity) +
-        "/books?vid=isbn" + isbn);
-    launchIntent(new Intent(Intent.ACTION_VIEW, uri));
-  }
-
-  final void searchBookContents(String isbnOrUrl) {
-    Intent intent = new Intent(Intents.SearchBookContents.ACTION);
-    intent.setClassName(activity, SearchBookContentsActivity.class.getName());
-    putExtra(intent, Intents.SearchBookContents.ISBN, isbnOrUrl);
-    launchIntent(intent);
   }
 
   final void openURL(String url) {
