@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         this.dingetje = findViewById(R.id.dingetje);
         this.butt = findViewById(R.id.butt); //yeey it found the butt
 
-        butt.setOnClickListener(new View.OnClickListener() { //kjken of er op het knopje is gedrukt
+        butt.setOnClickListener(new View.OnClickListener() { //kijken of er op het knopje is gedrukt
             @Override
             public void onClick(View v) {
                 String geweldigeTekst = dingetje.getText().toString().trim(); //maakt van de ingevoerde text een string - spaties op het begin/einde.

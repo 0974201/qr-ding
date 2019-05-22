@@ -31,9 +31,8 @@ public class MainActivity2 extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                IntentIntegrator it = new IntentIntegrator(MainActivity2.this); //roept qr scanner van de library
-                //it.setSingleTargetApplication("com.google.zxing.client.android.SCAN");
-                it.initiateScan(IntentIntegrator.QR_CODE_TYPES); //moet voor qr coeedes zoeken
+                IntentIntegrator it = new IntentIntegrator(MainActivity2.this); //roept qr scanner van de geimporteerde library
+                it.initiateScan(IntentIntegrator.QR_CODE_TYPES); //zoekt naar een qr code
             }
         });
     }
@@ -55,29 +54,4 @@ public class MainActivity2 extends AppCompatActivity {
             System.out.println("phail");
         }
     }
-
-    /*private void ding(){
-        //wat heb ik allemaal geschreven yo, ik kan mijn eigen comments niet lezen
-        PlanarYUVLuminanceSource sauce = new PlanarYUVLuminanceSource(0,0,0,0,0,0,0,false);
-
-        //dit ding doet decoderen versnellen want negeren onnodige pixel dingen en werkt met camera driv?,,
-        //mkea rry mt ifno v sauc
-        //woorden
-        //ik vertaal deez comments ltaer wle hfsjk
-
-        if(sauce != null){
-            BinaryBitmap plaatje = new BinaryBitmap(new HybridBinarizer(sauce));
-            //n dtea word t iern gstoep sndota qrsqnding hete kna vertlen nr stenfg me thg??
-            //hfeeeeeeee
-            //teyP
-            try {
-                textDing.setText(new qrScanDing().decoded(plaatje)); //wfjooooo lefkjf if s wokr
-            } catch (NotFoundException e) {
-                e.printStackTrace();
-            } catch (FormatException e) {
-                e.printStackTrace();
-            }
-        }
-    }*/
-
 }
