@@ -16,17 +16,6 @@
 
 package com.google.zxing.client.android;
 
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.DecodeHintType;
-import com.google.zxing.Result;
-import com.google.zxing.ResultMetadataType;
-import com.google.zxing.ResultPoint;
-import com.google.zxing.client.android.camera.CameraManager;
-import com.google.zxing.client.android.history.HistoryActivity;
-import com.google.zxing.client.android.history.HistoryItem;
-import com.google.zxing.client.android.history.HistoryManager;
-import com.google.zxing.client.android.result.ResultHandler;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -45,9 +34,6 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -58,6 +44,16 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.DecodeHintType;
+import com.google.zxing.Result;
+import com.google.zxing.ResultMetadataType;
+import com.google.zxing.ResultPoint;
+import com.google.zxing.client.android.camera.CameraManager;
+import com.google.zxing.client.android.history.HistoryItem;
+import com.google.zxing.client.android.history.HistoryManager;
+import com.google.zxing.client.android.result.ResultHandler;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -98,7 +94,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
   private View resultView;
   private Result lastResult;
   private boolean hasSurface;
-  private boolean copyToClipboard;
   private IntentSource source;
   private String sourceUrl;
   private Collection<BarcodeFormat> decodeFormats;
@@ -178,9 +173,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
     Intent intent = getIntent();
 
-    copyToClipboard = prefs.getBoolean(PreferencesActivity.KEY_COPY_TO_CLIPBOARD, true)
-            && (intent == null || intent.getBooleanExtra(Intents.Scan.SAVE_HISTORY, true));
-
     source = IntentSource.NONE;
     sourceUrl = null;
     decodeFormats = null;
@@ -211,11 +203,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
           if (cameraId >= 0) {
             cameraManager.setManualCameraId(cameraId);
           }
-        }
-
-        String customPromptMessage = intent.getStringExtra(Intents.Scan.PROMPT_MESSAGE);
-        if (customPromptMessage != null) {
-          statusView.setText(customPromptMessage);
         }
 
       } else if (dataString != null &&
@@ -341,30 +328,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         return true;
     }
     return super.onKeyDown(keyCode, event);
-  }
-
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    MenuInflater menuInflater = getMenuInflater();
-    menuInflater.inflate(R.menu.capture, menu);
-    return super.onCreateOptionsMenu(menu);
-  }
-
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    Intent intent = new Intent(Intent.ACTION_VIEW);
-    intent.addFlags(Intents.FLAG_NEW_DOC);
-    int i = item.getItemId();
-    if (i == R.id.menu_history) {
-      intent.setClassName(this, HistoryActivity.class.getName());
-      startActivityForResult(intent, HISTORY_REQUEST_CODE);
-    } else if (i == R.id.menu_settings) {
-      intent.setClassName(this, PreferencesActivity.class.getName());
-      startActivity(intent);
-    } else {
-      return super.onOptionsItemSelected(item);
-    }
-    return true;
   }
 
   @Override
@@ -674,7 +637,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
   private void displayFrameworkBugMessageAndExit() {
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    builder.setTitle(getString(R.string.app_name));
     builder.setMessage(getString(R.string.msg_camera_framework_bug));
     builder.setPositiveButton(R.string.button_ok, new FinishListener(this));
     builder.setOnCancelListener(new FinishListener(this));
