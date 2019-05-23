@@ -186,6 +186,10 @@ public class IntentIntegrator {
     this.message = message;
   }
 
+  public void setMessageByID(int messageID) {
+    message = activity.getString(messageID);
+  }
+
   public Collection<String> getTargetApplications() {
     return targetApplications;
   }
@@ -275,8 +279,6 @@ public class IntentIntegrator {
       intentScan.putExtra("SCAN_CAMERA_ID", cameraId);
     }
 
-    String targetAppPackage = findTargetAppPackage(intentScan);
-    intentScan.setPackage(targetAppPackage);
     intentScan.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     intentScan.addFlags(FLAG_NEW_DOC);
     attachMoreExtras(intentScan);
@@ -355,7 +357,6 @@ public class IntentIntegrator {
     return null;
   }
 
-
   /**
    * Defaults to type "TEXT_TYPE".
    *
@@ -384,7 +385,6 @@ public class IntentIntegrator {
     intent.putExtra("ENCODE_TYPE", type);
     intent.putExtra("ENCODE_DATA", text);
     String targetAppPackage = findTargetAppPackage(intent);
-    intent.setPackage(targetAppPackage);
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     intent.addFlags(FLAG_NEW_DOC);
     attachMoreExtras(intent);

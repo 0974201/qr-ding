@@ -21,6 +21,7 @@ import android.view.Display;
 import android.view.MenuInflater;
 import android.view.WindowManager;
 import com.google.zxing.WriterException;
+import com.google.zxing.client.android.Contents;
 import com.google.zxing.client.android.FinishListener;
 import com.google.zxing.client.android.Intents;
 import com.google.zxing.client.android.R;
@@ -86,6 +87,7 @@ public final class EncodeActivity extends Activity {
     Intent intent = getIntent();
     if (intent != null) {
       String type = intent.getStringExtra(Intents.Encode.TYPE);
+      encodeItem.setVisible(Contents.Type.CONTACT.equals(type));
     }
     return super.onCreateOptionsMenu(menu);
   }

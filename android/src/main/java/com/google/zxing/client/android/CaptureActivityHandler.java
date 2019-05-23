@@ -43,7 +43,6 @@ import java.util.Map;
  *
  * @author dswitkin@google.com (Daniel Switkin)
  */
-
 public final class CaptureActivityHandler extends Handler {
 
   private static final String TAG = CaptureActivityHandler.class.getSimpleName();

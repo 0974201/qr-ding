@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.hardware.Camera;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Display;
@@ -59,7 +60,10 @@ final class CameraConfigurationManager {
     WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
     Display display = manager.getDefaultDisplay();
 
-    int displayRotation = display.getRotation();
+    int displayRotation = 0;
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
+      displayRotation = display.getRotation();
+    }
     int cwRotationFromNaturalToDisplay;
     switch (displayRotation) {
       case Surface.ROTATION_0:
@@ -119,7 +123,9 @@ final class CameraConfigurationManager {
     Log.i(TAG, "Clockwise rotation from display to camera: " + cwNeededRotation);
 
     Point theScreenResolution = new Point();
-    display.getSize(theScreenResolution);
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
+      display.getSize(theScreenResolution);
+    }
     screenResolution = theScreenResolution;
     Log.i(TAG, "Screen resolution in current orientation: " + screenResolution);
     cameraResolution = CameraConfigurationUtils.findBestPreviewSizeValue(parameters, screenResolution);
@@ -181,7 +187,9 @@ final class CameraConfigurationManager {
 
       //SetRecordingHint to true also a workaround for low framerate on Nexus 4
       //https://stackoverflow.com/questions/14131900/extreme-camera-lag-on-nexus-4
-      parameters.setRecordingHint(true);
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+        parameters.setRecordingHint(true);
+      }
 
     }
 
@@ -189,7 +197,9 @@ final class CameraConfigurationManager {
 
     theCamera.setParameters(parameters);
 
-    theCamera.setDisplayOrientation(cwRotationFromDisplayToCamera);
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
+      theCamera.setDisplayOrientation(cwRotationFromDisplayToCamera);
+    }
 
     Camera.Parameters afterParameters = theCamera.getParameters();
     Camera.Size afterSize = afterParameters.getPreviewSize();
@@ -225,7 +235,10 @@ final class CameraConfigurationManager {
     if (camera != null) {
       Camera.Parameters parameters = camera.getParameters();
       if (parameters != null) {
-        String flashMode = parameters.getFlashMode();
+        String flashMode = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.ECLAIR) {
+          flashMode = parameters.getFlashMode();
+        }
         return
             Camera.Parameters.FLASH_MODE_ON.equals(flashMode) ||
             Camera.Parameters.FLASH_MODE_TORCH.equals(flashMode);

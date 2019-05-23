@@ -20,6 +20,7 @@ import android.content.Context;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.hardware.Camera;
+import android.os.Build;
 import android.os.Handler;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -199,7 +200,9 @@ public final class CameraManager {
     OpenCamera theCamera = camera;
     if (theCamera != null && previewing) {
       previewCallback.setHandler(handler, message);
-      theCamera.getCamera().setOneShotPreviewCallback(previewCallback);
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CUPCAKE) {
+        theCamera.getCamera().setOneShotPreviewCallback(previewCallback);
+      }
     }
   }
 
