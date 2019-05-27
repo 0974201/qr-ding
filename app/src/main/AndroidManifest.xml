@@ -22,7 +22,7 @@
         <activity android:name=".MainActivity">
         </activity>
         <activity android:name="com.google.zxing.client.android.CaptureActivity"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 
