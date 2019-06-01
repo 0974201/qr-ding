@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/container"
     tools:context=".MainActivity2">
 
     <LinearLayout
@@ -26,7 +27,7 @@
 
     </LinearLayout>
 
-    <ImageView
+    <!-- <ImageView
         android:id="@+id/pijltje"
         android:layout_width="35dp"
         android:layout_height="35dp"
@@ -74,7 +75,7 @@
         android:typeface="monospace"
         app:layout_constraintBottom_toTopOf="@+id/arse"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" /> -->
 
 
 </android.support.constraint.ConstraintLayout>

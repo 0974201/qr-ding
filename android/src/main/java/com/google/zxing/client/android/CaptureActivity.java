@@ -363,12 +363,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     Intent intent = new Intent(Intent.ACTION_VIEW);
     intent.addFlags(Intents.FLAG_NEW_DOC);
     int i = item.getItemId();
-    if (i == R.id.menu_share) {
-      intent.setClassName(this, ShareActivity.class.getName());
-      startActivity(intent);
-    } else {
-      return super.onOptionsItemSelected(item);
-    }
     return true;
   }
 

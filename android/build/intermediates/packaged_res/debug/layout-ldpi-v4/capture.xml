@@ -123,10 +123,9 @@
           <TextView android:id="@+id/meta_text_view_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                   <!-- android:text="@string/msg_default_meta"-->
                     android:textColor="@color/result_minor_text"
                     android:textStyle="bold"
-                    android:paddingRight="@dimen/half_padding"/>
+                    android:paddingRight="@dimen/half_padding" />
 
           <TextView android:id="@+id/meta_text_view"
                     android:layout_width="wrap_content"
