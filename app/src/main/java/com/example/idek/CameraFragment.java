@@ -13,6 +13,9 @@ import androidx.camera.core.PreviewConfig;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.util.Rational;
 import android.util.Size;
@@ -37,9 +40,11 @@ import java.util.HashMap;
 //en waarvan de tutorial in een taal is dat ik 0% begrijp
 //saus: https://codelabs.developers.google.com/codelabs/camerax-getting-started/
 public class CameraFragment extends Fragment {
-    TextureView txView;
-    ViewfinderView vfView;
-    HashMap<DecodeHintType, Object> decodeDing = new HashMap<>();
+    private TextureView txView;
+    private ViewfinderView vfView;
+    private Bundle bun = new Bundle();
+    final int REQUEST_CODE = 1;
+    private HashMap<DecodeHintType, Object> decodeDing = new HashMap<>();
 
     public CameraFragment() {
         // Required empty public constructor
@@ -154,10 +159,12 @@ public class CameraFragment extends Fragment {
     }
 
     public void getQRRes(String s){
+        String q = s;
         Intent it = new Intent(getActivity(), qrReaderFragment.class); //uuhhh omdat een void niet echt iets terugggefft
-        it.putExtra("res", s); //dan maar via een intent terug stueren
-        System.out.println(s);
-        startActivityForResult(it,1);
+        it.putExtra("res", q); //dan maar via een intent terug stueren
+        //System.out.println(s);
+        bun.putString("message", q);
+        startActivityForResult(it,REQUEST_CODE);
     }
 
     public CameraFragment newInstance() {

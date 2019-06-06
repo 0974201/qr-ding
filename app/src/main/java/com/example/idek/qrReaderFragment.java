@@ -1,14 +1,19 @@
 package com.example.idek;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 //ik haat mijzelf dus daarom maak ik een camera ding met een api dat nog niet eens in de beta stage is
@@ -20,7 +25,7 @@ public class qrReaderFragment extends AppCompatActivity {
 
     private TextView textDing;
     private Button knopje;
-    private Handler cameraHandler;
+    String txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +34,6 @@ public class qrReaderFragment extends AppCompatActivity {
 
         this.textDing = findViewById(R.id.textDing);
         this.knopje = findViewById(R.id.knopj);
-        cameraHandler = new Handler();
         knopje.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -38,18 +42,28 @@ public class qrReaderFragment extends AppCompatActivity {
                 ts.replace(R.id.qrReaderContainer, new CameraFragment());
                 ts.addToBackStack(null);
                 ts.commit();
+                //FragmentManager fm = getSupportFragmentManager();
+                //FragmentTransaction ft = fm.beginTransaction();
+                //ft.replace(R.id.qrReaderContainer, new CameraFragment());
+                //ft.addToBackStack(null);
+                //ft.commit();
             }
         });
     }
 
     @Override
-    public void onActivityResult(int req, int rslt, Intent it) { //verwerkt wat er uit de scanding is gekomen
-        super.onActivityResult(req, rslt, it);
+    public void onActivityResult(int requestCode, int resultCode, Intent data) { //verwerkt wat er uit de scanding is gekomen
+        super.onActivityResult(requestCode, resultCode, data);
+        //Bundle bun = new Bundle();
+        //bun.getBundle("message");
 
-        if (rslt == RESULT_OK && req == 1) {
-            if (it != null) {
-                if (it.hasExtra("res")) {
-                    textDing.setText(it.getExtras().toString());
+        //textDing.setText(bun.getString("message"));
+
+        if (requestCode == 1) {
+            if (requestCode == RESULT_OK) {
+                if (data.hasExtra("res")) {
+                    txt = data.getExtras().toString();
+                    textDing.setText(txt);
                     Log.wtf(String.valueOf(this), "scanned.");
                 } else {
                     Log.wtf(String.valueOf(this), "phail");
@@ -59,5 +73,5 @@ public class qrReaderFragment extends AppCompatActivity {
             }
         }
     }
-}
 
+}
